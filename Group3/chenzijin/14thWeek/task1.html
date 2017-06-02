@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>校园说</title>
+    <link type="text/css" href="css/task1.css" rel="stylesheet"/>
+    <script type="text/javascript">
+        window.onload=function(){
+            var container=document.getElementById('container');
+            var list=document.getElementById('list');
+            var buttons=document.getElementById('buttons').getElementsByTagName('span');
+            var prev=document.getElementById('prev');
+            var next=document.getElementById('next');
+            var index=1;
+
+            function showButton(){//设置小圆点滚动
+                for(var i=0;i<buttons.length;i++){
+                    if(buttons[i].className == 'on'){
+                        buttons[i].className = '';
+                        break;
+                    }
+                }
+                buttons[index - 1].className='on';
+            }
+
+            function animate(offset){//无限滚动开始
+                var newLeft=parseInt(list.style.left) + offset;
+                list.style.left=newLeft + 'px';
+                if(newLeft>-1180){
+                    list.style.left=-3540+'px';
+                }
+                if(newLeft<-3540){
+                    list.style.left=-1180+'px';
+                }
+//
+            }//无限滚动结束
+
+            next.onclick=function(){//点击箭头事件开始
+                if(index == 5){
+                    index = 1;
+                }
+                else{
+                    index += 1;
+                }
+                showButton();
+                animate(-1180);
+            }
+            prev.onclick=function(){
+                if(index == 1){
+                    index = 5;
+                }
+                else{
+                    index -= 1;
+                }
+                showButton();
+                animate(1180);
+
+            }//点击箭头事件结束
+
+            for(var i = 0;i<buttons.length;i++){
+                buttons[i].onclick=function(){
+                    if(this.className == 'on'){
+                        return;
+                    }
+                    var myIndex=parseInt(this.getAttribute('index'));
+                    var offset=-1180 * (myIndex - index);
+                    animate(offset);
+                    index=myIndex;
+                    showButton();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div class="wrap_t">
+        <div class="top">
+            <div class="top_l">首页</div>
+            <div class="top_r">
+                <div class="top_r_l"><a href="#">什么是校园说？</a></div>
+                <div class="top_r_ro"><a href="#">登录</a><span>&frasl;</span></div>
+                <div class="top_r_rt"><a href="#">注册</a></div>
+            </div>
+        </div>
+    </div>
+    <div class="nav">
+        <div class="nav_l">
+            <div class="logo"></div>
+            <div class="school">
+                <p>重庆邮电大学</p>
+                <div><a href="#">切换学校</a></div>
+            </div>
+        </div>
+        <div class="nav_r">
+            <ul>
+                <li><a href="#">首页</a></li>
+                <li><a href="#" class="active">听听堂</a></li>
+                <li><a href="#">话题社</a></li>
+                <li><a href="#">发布Talking</a></li>
+                <li><a href="#">我的校园说</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="wrap_c">
+        <div id="container">
+            <div id="list" style="left:-1180px;">
+                <img src="images/1.jpg" title="logo" alt="logo"/>
+                <img src="images/wrap_c_bg.jpg" title="logo" alt="logo"/>
+                <img src="images/2.jpg" title="logo" alt="logo"/>
+                <img src="images/3.jpg" title="logo" alt="logo"/>
+                <img src="images/1.jpg" title="logo" alt="logo"/>
+            </div>
+            <div id="buttons">
+                <span index="1"></span>
+                <span index="2"></span>
+                <span index="3" class="on"></span>
+                <span index="4"></span>
+                <span index="5"></span>
+            </div>
+            <a href="javascript:;" class="arrow" id="prev">&lt;</a>
+            <a href="javascript:;" class="arrow" id="next">&gt;</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="content_top">
+            <div class="c_t_l">创业</div>
+            <div class="c_t_r"><a href="http://www.varbee.com/">更多&gt;&gt;</a></div>
+        </div>
+        <div class="content_c">
+            <div class="c_c_l">
+                <div class="word_l">创造改变世界</div>
+                <div class="word_r"><a href="#">更多&gt;</a></div>
+            </div>
+            <div class="c_c_r">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大啦啦啦啦啦</span></div>
+                <p class="c_c_r_t">时间等你来约</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+            </div>
+            <div class="c_c_r">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大啦啦啦啦啦</span></div>
+                <p class="c_c_r_t">时间等你来约</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+                <div class="bg"></div>
+                <div class="score"><span>9</span>.5分</div>
+                <div class="condition">已有15人参加</div>
+            </div>
+            <div class="c_c_r second">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大</span></div>
+                <p class="c_c_r_t">8月20日&nbsp;13:00-14:00</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+            </div>
+            <div class="c_c_r last second">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大</span></div>
+                <p class="c_c_r_t">8月20日&nbsp;13:00-14:00</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+                <div class="bg"></div>
+                <div class="score"><span>9</span>.5分</div>
+                <div class="condition">已有4/10参加</div>
+            </div>
+        </div>
+        <div class="content_top">
+            <div class="c_t_l">就业</div>
+            <div class="c_t_r"><a href="http://www.varbee.com/">更多&gt;&gt;</a></div>
+        </div>
+        <div class="content_c c_two">
+            <div class="c_c_l two">
+                <div class="word_l">毕业去哪儿</div>
+                <div class="word_r"><a href="#">更多&gt;</a></div>
+            </div>
+            <div class="c_c_r">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大啦啦啦啦啦</span></div>
+                <p class="c_c_r_t">时间等你来约</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+            </div>
+            <div class="c_c_r">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大啦啦啦啦啦</span></div>
+                <p class="c_c_r_t">时间等你来约</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+                <div class="bg"></div>
+                <div class="score"><span>9</span>.5分</div>
+                <div class="condition">已有15人参加</div>
+            </div>
+            <div class="c_c_r second">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大</span></div>
+                <p class="c_c_r_t">8月20日&nbsp;13:00-14:00</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+            </div>
+            <div class="c_c_r last second">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大</span></div>
+                <p class="c_c_r_t">8月20日&nbsp;13:00-14:00</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+                <div class="bg"></div>
+                <div class="score"><span>9</span>.5分</div>
+                <div class="condition">已有4/10参加</div>
+            </div>
+        </div>
+        <div class="content_top">
+            <div class="c_t_l">留学</div>
+            <div class="c_t_r another"><a href="http://www.varbee.com/">更多&gt;&gt;</a></div>
+        </div>
+        <div class="content_c c_three">
+            <div class="c_c_l three">
+                <div class="word_l">我想出去看看</div>
+                <div class="word_r"><a href="#">更多&gt;</a></div>
+            </div>
+            <div class="c_c_r">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大啦啦啦啦啦</span></div>
+                <p class="c_c_r_t">时间等你来约</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+            </div>
+            <div class="c_c_r">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大啦啦啦啦啦</span></div>
+                <p class="c_c_r_t">时间等你来约</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+                <div class="bg"></div>
+                <div class="score"><span>9</span>.5分</div>
+                <div class="condition">已有15人参加</div>
+            </div>
+            <div class="c_c_r second">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大</span></div>
+                <p class="c_c_r_t">8月20日&nbsp;13:00-14:00</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+            </div>
+            <div class="c_c_r last second">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大</span></div>
+                <p class="c_c_r_t">8月20日&nbsp;13:00-14:00</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+                <div class="bg"></div>
+                <div class="score"><span>9</span>.5分</div>
+                <div class="condition">已有4/10参加</div>
+            </div>
+        </div>
+        <div class="content_top c_t_o">
+            <div class="c_t_l">保研</div>
+            <div class="c_t_r another"><a href="http://www.varbee.com/">更多&gt;&gt;</a></div>
+        </div>
+        <div class="content_c c_four">
+            <div class="c_c_l four">
+                <div class="word_l">狭路相逢勇者胜</div>
+                <div class="word_r"><a href="#">更多&gt;</a></div>
+            </div>
+            <div class="c_c_r">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大啦啦啦啦啦</span></div>
+                <p class="c_c_r_t">时间等你来约</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+            </div>
+            <div class="c_c_r">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大啦啦啦啦啦</span></div>
+                <p class="c_c_r_t">时间等你来约</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+                <div class="bg"></div>
+                <div class="score"><span>9</span>.5分</div>
+                <div class="condition">已有15人参加</div>
+            </div>
+            <div class="c_c_r second">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大</span></div>
+                <p class="c_c_r_t">8月20日&nbsp;13:00-14:00</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+            </div>
+            <div class="c_c_r last second">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大</span></div>
+                <p class="c_c_r_t">8月20日&nbsp;13:00-14:00</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+                <div class="bg"></div>
+                <div class="score"><span>9</span>.5分</div>
+                <div class="condition">已有4/10参加</div>
+            </div>
+        </div>
+        <div class="content_top c_t_t">
+            <div class="c_t_l">考研</div>
+            <div class="c_t_r another"><a href="#">更多&gt;&gt;</a></div>
+        </div>
+        <div class="content_c c_five">
+            <div class="c_c_l five">
+                <div class="word_l">一分耕耘一分收获</div>
+                <div class="word_r"><a href="http://www.varbee.com/">更多&gt;</a></div>
+            </div>
+            <div class="c_c_r">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大啦啦啦啦啦</span></div>
+                <p class="c_c_r_t">时间等你来约</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+            </div>
+            <div class="c_c_r">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大啦啦啦啦啦</span></div>
+                <p class="c_c_r_t">时间等你来约</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+                <div class="bg"></div>
+                <div class="score"><span>9</span>.5分</div>
+                <div class="condition">已有15人参加</div>
+            </div>
+            <div class="c_c_r second">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大</span></div>
+                <p class="c_c_r_t">8月20日&nbsp;13:00-14:00</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+            </div>
+            <div class="c_c_r last second">
+                <p class="c_c_r_o">做好未来职业规划</p>
+                <div class="message">刘智鹏<span>保研重大</span></div>
+                <p class="c_c_r_t">8月20日&nbsp;13:00-14:00</p>
+                <div class="c_c_r_th"><span>&yen;</span>50</div>
+                <div class="bg"></div>
+                <div class="score"><span>9</span>.5分</div>
+                <div class="condition">已有4/10参加</div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="f_wrap">
+            <div class="footer_l">
+                <div class="f_logo"></div>
+                <div class="else_o"><a href="#"></a></div>
+                <div class="else_t"><a href="#"></a></div>
+            </div>
+            <div class="footer_r">
+                <ul class="ul_f">
+                    <li><a href="#">关于校园说</a></li>
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+                <ul class="ul_s">
+                    <li><a href="#">Copyrights&copy;2015-2016</a></li>
+                    <li><a href="#">CampusSay</a></li>
+                    <li><a href="#">Co.Ltd.All Rights Reserved</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

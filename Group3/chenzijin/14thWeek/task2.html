@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>task2</title>
+    <link href="css/task2.css" type="text/css" rel="stylesheet" />
+    <script type="text/javascript">
+        window.onload=function(){
+            var container=document.getElementById('container');
+            var list=document.getElementById('list');
+            var buttons=document.getElementById('buttons').getElementsByTagName('span');
+            var prev=document.getElementById('prev');
+            var next=document.getElementById('next');
+            var index=1;
+
+            function showButton(){//设置小圆点滚动
+                for(var i=0;i<buttons.length;i++){
+                    if(buttons[i].className == 'on'){
+                        buttons[i].className = '';
+                        break;
+                    }
+                }
+                buttons[index - 1].className='on';
+            }
+
+            function animate(offset){//无限滚动开始
+                var newLeft=parseInt(list.style.left) + offset;
+                list.style.left=newLeft + 'px';
+                if(newLeft>-1500){
+                    list.style.left=-6000+'px';
+                }
+                if(newLeft<-6000){
+                    list.style.left=-1500+'px';
+                }
+//
+            }//无限滚动结束
+
+            next.onclick=function(){//点击箭头事件开始
+                if(index == 4){
+                    index = 1;
+                }
+                else{
+                    index += 1;
+                }
+                showButton();
+                animate(-1500);
+            }
+            prev.onclick=function(){
+                if(index == 1){
+                    index = 4;
+                }
+                else{
+                    index -= 1;
+                }
+                showButton();
+                animate(1500);
+
+            }//点击箭头事件结束
+
+            for(var i = 0;i<buttons.length;i++){
+                buttons[i].onclick=function(){
+                    if(this.className == 'on'){
+                        return;
+                    }
+                    var myIndex=parseInt(this.getAttribute('index'));
+                    var offset=-1500 * (myIndex - index);
+                    animate(offset);
+                    index=myIndex;
+                    showButton();
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="wrap">
+    <div id="nav">
+        <div class="nav_c">
+            <ul class="ul_w">
+                <li><a href="#" class="nav_c_f">首页</a></li>
+                <li class="ha_b_o"><a href="#">我是新朋友</a></li>
+                <li class="ha_b_t father"><a href="#">教会介绍</a>
+                    <ul class="ul_in">
+                        <li><a href="#">教会历史</a></li>
+                        <li><a href="#">神职人员</a></li>
+                    </ul>
+                </li>
+                <li class="ha_b_t"><a href="#">团契生活</a></li>
+                <li class="ha_b_t"><a href="#">见证分享</a></li>
+                <li class="ha_b_t"><a href="#">资源下载</a></li>
+                <li class="no_b"><a href="#">祷告和代祷</a></li>
+                <li class="no_b"><a href="#">加入我们</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="top">
+        <div id="container">
+            <div id="list" style="left:-1500px;">
+                <img src="images/picture1.jpg" title="logo" alt="logo"/>
+                <img src="images/picture2.jpg" title="logo" alt="logo"/>
+                <img src="images/picture1.jpg" title="logo" alt="logo"/>
+                <img src="images/picture2.jpg" title="logo" alt="logo"/>
+                <img src="images/picture1.jpg" title="logo" alt="logo"/>
+            </div>
+            <div id="buttons">
+                <span index="1"></span>
+                <span index="2" class="on"></span>
+                <span index="3"></span>
+                <span index="4"></span>
+            </div>
+            <a href="javascript:;" class="arrow" id="prev">&lt;</a>
+            <a href="javascript:;" class="arrow" id="next">&gt;</a>
+        </div>
+    </div>
+    <div class="content_o">
+        <div class="c_o_wrap">
+            <h2>每个礼拜日<span></span>相约南山黄桷垭救主堂</h2>
+            <p class="c_o_w_p">时间：早上：8：30（第一场）&nbsp;10：30（第二场）&nbsp;&nbsp;地点：重庆市南岸区-黄桷垭救主堂-3楼</p>
+            <div class="article">
+                <div class="article_l">
+                    <h3>《主再来的日子》</h3>
+                    <p class="information">彼得后书：3章：1-6节&nbsp;&nbsp;赵灵恩&nbsp;牧师</p>
+                    <p>1亲爱的兄弟啊，我现在写给你们的是第二封信,这两封都是提醒你们提醒你们提醒你们，激发你们诚实的心激发你们诚实的心激发你们诚实的心。2叫你们纪念先知预先所说的话，和主救主的命令。3叫你们纪念圣先知预先所说的话纪念圣先知预先所说的话纪念圣先知预先所说的话纪念圣先知预先所说的话，和主救主的命令。4叫你们纪念圣主救主救主的命你们纪念圣主救主救主的命圣主救主救主的命圣主救主救主的命......</p>
+                    <div class="time">4/27/2017（本周）</div>
+                </div>
+                <div class="article_r">
+                    <div class="a_r_t">
+                        <h3>敬拜赞美（第一场）</h3>
+                        <ul>
+                            <li class="a_r_t_o"><a href="#">《认识你真好》</a></li>
+                            <li class="a_r_t_t"><a href="#">《全心赞美》</a></li>
+                            <li><a href="#">《你真伟大》</a></li>
+                            <li><a href="#">《新的方向，新的异象》</a></li>
+                        </ul>
+                    </div>
+                    <div class="a_r_t">
+                        <h3>敬拜赞美（第一场）</h3>
+                        <ul>
+                            <li class="a_r_t_o"><a href="#">《认识你真好》</a></li>
+                            <li class="a_r_t_t"><a href="#">《全心赞美》</a></li>
+                            <li><a href="#">《你真伟大》</a></li>
+                            <li><a href="#">《新的方向，新的异象》</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content_t">
+        <h2>我们的团契生活<span>共享主爱</span></h2>
+        <div class="c_t_wrap">
+            <div class="c_t_w_w c_t_w_w_f">
+                <div class="c_t_w_w_w">
+                    <div class="d_hr"></div>
+                    <blockquote>“这称为我名下的子民，若是自卑祷告自卑祷告自卑祷告，天上垂听，转离他们的恶行我必从天上垂听赦免他们的罪，医治他们的地”</blockquote>
+                    <div class="add">（历代志下7：14）</div>
+                </div>
+                <h4>大学生团契</h4>
+                <p>主题<strong>《活出基督样式》</strong></p>
+                <p class="s_time">每周周三&nbsp;晚七点<strong>大班教师</strong></p>
+            </div>
+            <div class="c_t_w_w c_t_w_w_s">
+                <h4>职场团契</h4>
+                <p>主题<strong>《活出基督样式》</strong></p>
+                <p class="s_time">每周周三&nbsp;晚七点<strong>大班教师</strong></p>
+        </div>
+            <div class="c_t_w_w c_t_w_w_t">
+                <h4>儿童主日学</h4>
+                <p>主题<strong>《活出基督样式》</strong></p>
+                <p class="s_time">每周周三&nbsp;晚七点<strong>大班教师</strong></p>
+            </div>
+            <div class="c_t_w_w c_t_w_w_fo">
+                <h4>姊妹团契</h4>
+                <p>主题<strong>《活出基督样式》</strong></p>
+                <p class="s_time">每周周三&nbsp;晚七点<strong>大班教师</strong></p>
+            </div>
+        </div>
+    </div>
+    <div class="content_three">
+        <div class="c_three_w">
+            <h4>传承&nbsp;&nbsp;&nbsp;颂扬&nbsp;&nbsp;&nbsp;配搭</h4>
+            <p>位于重庆市南岸区文峰路的黄桷垭教堂初建于1944年，因躲避日军空袭而修建的传扬主之爱的教堂。文革时期，全国上下停止聚会。直到2000年，恢复聚会，如今，教堂里堂里上上下下服侍的弟兄姊妹越来越多。</p>
+            <div class="function_w">
+                <div class="function">
+                    <img src="images/function1.jpg" title="function" alt="function" />
+                    <h4 class="f_h_first"><a href="#">爱心奉献</a></h4>
+                </div>
+                <div class="function">
+                    <img src="images/function2.jpg" title="function" alt="function" />
+                    <h4><a href="#">每日一句</a></h4>
+                </div>
+                <div class="function fun_last">
+                    <img src="images/function3.jpg" title="function" alt="function" />
+                    <h4><a href="#">我要留言</a></h4>
+                </div>
+                <div class="function">
+                    <img src="images/function4.jpg" title="function" alt="function" />
+                    <h4><a href="#">其他聚点</a></h4>
+                </div>
+                <div class="function">
+                    <img src="images/function5.jpg" title="function" alt="function" />
+                    <h4><a href="#">为你代祷</a></h4>
+                </div>
+                <div class="function fun_last">
+                    <img src="images/function6.jpg" title="function" alt="function" />
+                    <h4><a href="#">我要提问</a></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content_four">
+        <div class="content_f_wrap">
+            <h3>看尽世上的万事<span>信仰的眼光</span></h3>
+            <img src="images/four_list.jpg" title="list" alt="list" />
+            <div class="c_f_list c_f_l_one">
+                <div class="c_f_l_c">
+                    <h3>在信仰里团队的合作怎样才会达到最好的状态？</h3>
+                    <p class="list_time">7/6/2017</p>
+                    <p class="l_article">耶稣又对他们说：“人拿灯来，岂是要放在斗底下床底下不放在灯台上吗？”因为掩藏的是耳可听的，就应当听又说：“你们所听的要留心。你们用。”</p>
+                    <p class="c_add c_add_f add_hover">来自星球的钱子<a href="#">详情</a></p>
+                </div>
+            </div>
+            <div class="c_f_list c_f_l_two">
+                <div class="c_f_l_c">
+                    <h3>在信仰里团队的合作怎样才会达到最好的状态？</h3>
+                    <p class="list_time">7/6/2017</p>
+                    <p class="l_article">耶稣又对他们说：“人拿灯来，岂是要放在斗底下床底下不放在灯台上吗？”因为掩藏的是耳可听的，就应当听又说：“你们所听的要留心。你们用。”</p>
+                    <p class="c_add c_add_t">Dear&nbsp;&nbsp;Jchn<a href="#">详情</a></p>
+                </div>
+            </div>
+            <div class="c_f_list c_f_list_l">
+                <div class="c_f_l_c">
+                    <h3>在信仰里团队的合作怎样才会达到最好的状态？</h3>
+                    <p class="list_time">7/6/2017</p>
+                    <p class="l_article">耶稣又对他们说：“人拿灯来，岂是要放在斗底下床底下不放在灯台上吗？”因为掩藏的是耳可听的，就应当听又说：“你们所听的要留心。你们用。”</p>
+                    <p class="c_add c_add_th">请叫我小丸子<a href="#">详情</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="to_top"><a href="#nav"><img src="images/to_top.jpg" title="to_top" alt="to_top" /></a></div>
+    </div>
+    <div class="footer">
+        <div class="footer_w">
+            <div class="foot_list">
+                <ul>
+                    <li><a href="#" class="foot_l_f">我是新朋友</a></li>
+                    <li><a href="#">教会介绍</a></li>
+                    <li><a href="#">团契生活</a></li>
+                    <li><a href="#">见证分享</a></li>
+                    <li><a href="#">资源下载</a></li>
+                    <li><a href="#">祷告和代祷</a></li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </div>
+            <p class="address">地址：重庆市南岸区黄桷垭文峰段33号</p>
+            <p class="call">联系我们：18883866363&nbsp;&nbsp;E-mail:1076805106@qq.com</p>
+            <p class="messages">渝ICP备0703024&nbsp;&nbsp;京公网备11445802010153号</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
