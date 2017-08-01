@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>task21</title>
+    <style>
+        body,div,input,textarea,button{margin:0;padding:0;}
+        input,textarea{outline:none;border:none;}
+        textarea{resize:none;overflow:auto;}
+        button{outline:none;}
+        body {
+            width: 1000px;
+            text-align:center;
+            margin: 0 auto;
+            background:#FEF3CC;
+        }
+        span{
+            font-size:30px;
+            color:#413c3c;
+        }
+        #tag_box {
+            margin: 20px auto;
+            font-size:16px;
+        }
+        #tag_input{
+            width:300px;
+            height:50px;
+            border-radius:10px;
+            font-size:26px;
+            color:#22C7A9;
+        }
+        #tag_list {
+            display: flex;
+        }
+        #tag_list span{
+            background-color: #22C7A9;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px;
+            margin: 2px 5px;
+            border-radius:30px;
+        }
+        #hobby_box {
+            margin: 20px auto;
+        }
+        #hobby_list {
+            display: flex;
+        }
+        #hobby_list span{
+            background-color:#F21368;
+            color: #fff;
+            cursor: pointer;
+            padding: 8px;
+            margin: 2px 5px;
+            border-radius:30px;
+        }
+        #hobby_input{
+            width:300px;
+            height:100px;
+            border-radius:20px;
+            padding:10px;
+            font-size:30px;
+            color:#F21368;
+        }
+        #hobby_box button {
+            margin-top:16px;
+            padding: 8px;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+            color:#fff;
+            background-color:#6e6a6a;
+        }
+    </style>
+</head>
+<body>
+<div id="tag_box">
+    <span>Tag:</span>
+    <input type="text" id="tag_input" />
+</div>
+<div id="tag_list"></div>
+<div id="hobby_box">
+    <textarea rows="3" cols="25" id="hobby_input"></textarea><br>
+    <button id="conBtn">确认兴趣爱好</button>
+</div>
+<div id="hobby_list"></div>
+<script>
+    var oTagInput = document.getElementById("tag_input"),
+            oTagList = document.getElementById("tag_list"),
+            oHobbyInput = document.getElementById("hobby_input"),
+            oHobbyList = document.getElementById("hobby_list"),
+            oConBtn = document.getElementById("conBtn");
+    var json = {},//建一个空对象
+            n = 0,
+            arr = [],
+            arr1 = [],
+            aSpan;
+
+    //tag中的标签的添加显示
+    function addTag(event){
+        var ev = ev||event;//为了兼容浏览器
+
+        //如果按键是回车，逗号，空格
+        if(ev.keyCode == 13| ev.keyCode == 188| ev.keyCode == 32) {//keyCode获取按下的键盘按键的Unicode值，比如w的值是119
+            var oTagInputValue = trim(oTagInput.value);//前后去空格处理
+            var lastChar = oTagInputValue.charAt(oTagInputValue.length - 1);//charAt(0)返回第一位字符,这里意思是：取最后一个字符
+            //如果最后一个字符是逗号或者空格，把最后一个字符去掉
+            if(lastChar == "," | lastChar == " " | lastChar == "，"){
+                oTagInputValue = oTagInputValue.substring(0,oTagInputValue.length - 1);//提取字符串下标为0到.length-2的字符
+            }
+            //如果与之前不重复，则添加到数组，添加span节点
+            if(!json[oTagInputValue]){
+                n++;
+                json[oTagInputValue] = n;
+                arr.push(oTagInputValue);
+                oTagList.innerHTML += '<span>' + oTagInputValue + '</span>';
+            }
+            oTagInput.value = "";
+        }
+
+        //如果arr的长度大于10，把前面的删除掉，并且把oTagList中的第一个span节点删掉
+        if(arr.length > 10){
+            delete json[arr[0]];
+            arr.shift();//shift()把数组的第一个元素从其中删除，并且返回第一个元素的值
+            oTagList.removeChild(oTagList.childNodes[0]);//removeChild()从列表中删除一个元素
+        }
+        //对oTagList中span节点的鼠标移入，移出，点击事件
+        aSpan = oTagList.getElementsByTagName('span');
+        for(var i = 0;i < aSpan.length; i++){
+            aSpan[i] = i;
+            fn(i);
+        }
+    }
+    oTagInput.onkeyup = addTag;
+
+    //鼠标移入，移出，点击函数
+    function fn(i){
+        var old = aSpan[i].innerHTML;
+        aSpan[i].onmouseover = function(){
+            this.innerHTML = '点击删除' + old;
+            this.style.background = '#F21368';
+        };
+        aSpan[i].onmouseout = function(){
+            this.innerHTML = old;
+            this.style.background = "#22C7A9";
+        };
+        aSpan[i].onclick = function(){
+            this.parentNode.removeChild(this);
+            for(var j=0;j<arr.length;j++){
+                console.log(old,arr[j]);
+                arrDelJ(old,j);
+            }
+            console.log(old,arr,json);
+        }
+    }
+
+    //删除json里面对应属性和arr里面对应项
+    function arrDelJ(old,j){
+        if(old == arr[j]){
+            delete json[arr[j]];
+            arr.splice(j,1);//从arr[j]开始删，一直1个，也就是删掉arr[j]
+        }
+    }
+
+    //向textarea中添加爱好
+    var arrHobbies = [];
+    function oConBtnClick(){
+        oHobbyList.innerHTML = '';//给最后显示爱好的div内容初始化
+        //设置分割字符串，循环添加到数组
+        var reg = /\s|。|\?|\*|;|；|}|%|,|，|、/g;//分割字符有不可见字符（包括空格，制表符，换页符，换行符，回车符等等）
+        arr1 = oHobbyInput.value.split(reg);//把字符串从指定的分割字符处分割成字符串数组
+        for(var i=0;i<arr1.length;i++){
+            arrHobbies.push(trim(arr1[i]));
+        }
+        //数组去重
+        arrHobbies = arrHobbies.unique();
+
+        //如果数组长度超过10，则去掉前面的
+        if(arrHobbies.length > 10){
+            arrHobbies.splice(0,arrHobbies.length - 10);
+        }
+        //将数组中的爱好渲染到页面
+        for(var j=0;j<arrHobbies.length;j++){
+            oHobbyList.innerHTML += '<span>' + arrHobbies[j] + '</span>';
+        }
+        oHobbyInput.value = '';
+
+    }
+    oConBtn.onclick = oConBtnClick;
+
+    //字符串前后空格处理
+    function trim(str){
+        return str.replace(/(^\s*)|(\s*$)/g,"");//正则表达试中特殊的空格表达式
+    }
+
+    //数组去重
+    Array.prototype.unique = function(){//Array.prototype本身就是Array,该Array.prototype属性表示Array构造函数的原型，并允许您向所有Array对象添加新的属性和方法。
+        var temp = [];
+        var json = {};
+        for(var i=0;i<this.length;i++){
+            if(!json[this[i]]){
+                temp.push(this[i]);
+                json[this[i]] = true;
+            }
+        }
+        return temp;
+    };
+</script>
+</body>
+</html>
