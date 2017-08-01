@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>筛选空气质量数据1</title>
+    <style>
+        body,h3,ul,li,div{margin:0;padding:0;}
+        li{list-style:none;}
+        body{
+            background-color:#F49393;
+            font-family:"Arial","Microsoft YaHei","黑体","宋体","sans-serif";
+        }
+        .wrap{
+            width:150px;
+            margin:70px auto;
+        }
+        h3{
+            text-align:center;
+            color:#F21368;
+            margin:10px 0;
+        }
+        li{
+            color:#261D1D;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <h3>污染城市列表</h3>
+    <ul id="list"></ul>
+</div>
+</body>
+<script type="text/javascript">
+    var aqiData = [
+        ["北京",30],
+        ["上海",60],
+        ["福州",70],
+        ["广州",65],
+        ["成都",100],
+        ["西安",90]
+    ];
+    (function(){
+//        var olist = document.getElementById("list");
+//        var arr = new Array();
+//        var arrNumber = ["一","二","三","四","五","六"];
+//
+//        function sortNumber(a,b){//排序函数,按照数值的大小进行排序
+//            return a-b;
+//        }
+//
+//        for(var i=0;i<aqiData.length;i++){
+//            arr[i] = aqiData[i][1]; //获取每个城市的空气质量值，并且存入一个数组里
+//        }
+//
+//        arr = arr.sort(sortNumber);//按照数值的大小排好序
+//
+//        for(var i=0;i<arr.length;i++){
+//            if(arr[i] >= 60){
+//                var oLi = document.createElement("li");
+//                oLi.innerHTML = "第" + arrNumber[i - 1] + "名：" + aqiData[i][0] + '，' +  arr[i];
+//                olist.appendChild(oLi);
+//            }
+//        }
+
+        var olist = document.getElementById("list");
+        var arrNumber = ["一","二","三","四","五","六"];
+        function sortNumber(a,b){//排序函数,按照数值的大小进行排序
+           return a[1] - b[1];
+        }
+        aqiData.sort(sortNumber);
+        for(var i = 0;i < aqiData.length;i++){
+            if(aqiData[i][1] >= 60){
+                var oLi = document.createElement("li");
+                oLi.innerHTML = "第" + arrNumber[i] + "名：" + aqiData[i][0] + '，' +  aqiData[i][1];
+                olist.appendChild(oLi);
+            }
+        }
+
+    })();//匿名和自动执行函数
+</script>
+</html>

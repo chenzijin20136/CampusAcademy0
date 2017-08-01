@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>简易计算器</title>
+    <style>
+        body,table,tr,td{margin:0;padding:0;}
+        table{border-collapse:collapse;}
+        tr td{font-size:26px;color:#3C1B1F;}
+        #calculater{
+            margin:30px auto;
+            border: solid 6px #FF847C;
+            border-spacing: 0;
+        }
+        #display{
+            width: 100%;
+            height: 40px;
+            border-top:solid 10px #FF847C;
+            border-bottom: solid 10px #FF847C;
+            font-weight: bold;
+            color: #45171D;
+            font-family: "黑体";
+            padding-right: 10px;
+            text-align:right;
+            background: #FECEA8;
+        }
+        .numberkey{
+            cursor: pointer;
+            width: 80px;
+            height: 60px;
+            border: solid 2px #ccc;
+            background: #FF847C;
+            text-align: center;
+            font-weight: bold;
+            font-family: "黑体";
+        }
+        #equality{
+            cursor: pointer;
+            width: 80px;
+            height: 100%;
+            background: #FF847C;
+            border: solid 2px #45171D;
+            text-align: center;
+            font-weight: bold;
+            font-family: 黑体;
+        }
+        .numberkey:hover{
+            background: #E5F9BD;
+        }
+        #equality:hover{
+            background: #E5F9BD;
+        }
+    </style>
+</head>
+<body>
+<table id="calculater" onclick="calculater()">
+    <tr>
+        <td id="display" colspan="5">0</td>
+    </tr>
+    <tr>
+        <td class="numberkey">1</td>
+        <td class="numberkey" >2</td>
+        <td class="numberkey" >3</td>
+        <td class="numberkey" >+</td>
+        <td class="numberkey"  id="deletesign">c</td>
+    </tr>
+    <tr>
+        <td class="numberkey" >4</td>
+        <td class="numberkey" >5</td>
+        <td class="numberkey" >6</td>
+        <td class="numberkey" >-</td>
+        <td id="equality" rowspan="3" onclick="resultscalcaulte()">=</td>
+    </tr>
+    <tr>
+        <td class="numberkey" >7</td>
+        <td class="numberkey" >8</td>
+        <td class="numberkey" >7</td>
+        <td class="numberkey" >*</td>
+    </tr>
+    <tr >
+        <td class="numberkey" >+/-</td>
+        <td class="numberkey" >0</td>
+        <td class="numberkey" >.</td>
+        <td class="numberkey" >/</td>
+    </tr>
+</table>
+<script>
+    //点击事件所触发的函数
+    var results = "";//results为全局变量，用+=是为了把所有点击的内容串起来累加给results，一起输出
+    var calresults = "";
+    var lastKey = "";//存储上一个点击的值
+    var flg = 1;//为了判断是否按了两次+/-
+    var results2 = "";//为了在按了两次+/-之后，改变内容
+    var re1 = /^[\*|\/].+/;//第一位是*或者/，后面可以是任意字符.判断字符串的开头是不是符号*或/的正则表达
+    var re2 = /.+[\*|\/]$/;//最后一位字符是*或者/
+    var re3 = /(\+|-|\*|\/)/;//+或者-或者*或者/
+    function calculater(){
+        //如果点击第一行显示的部分
+        if (event.srcElement.id=="display") {
+            return;
+        }
+        //如果点击了"="
+        if(event.srcElement.innerText == "="){
+            return;
+        }
+        //如果点击了C的单元格，就开启清除功能
+        if(event.srcElement.innerText == "c"){
+            results = "";//清除所有内容
+            display.innerText = "0";//显示的内容为0
+            return ;
+        }
+        //判断上一个点击的值是不是运算符号，为了避免同时按下几个运算符
+        if(lastKey.match(re3) && event.srcElement.innerText.match(re3)){
+            return;
+        }
+        //判断算式是不是以运算符号*或/开头
+        if(results.match(re1)){//如果输入的内容和re1匹配成功
+            display.innerText = "输入错误";
+            results = "";//清空内容
+            return;
+        }
+        //如果首先点了+-*/就返回
+        if(lastKey.match(re3)&&event.srcElement.innerText.match(re3)){
+            return;
+        }
+
+//        //+/-给数变为相反数的功能，前提是点击的有内容
+//        if(event.srcElement.innerText == "+/-" && results != ""){
+//            results = "-" + "(" + results + ")";//给现有的内容加上括号，然后加上负号
+//            display.innerText = results;
+//            return;
+//        }
+
+        //+/-给数变为相反数的功能，前提是点击的有内容，同时保证按了两次或者多次的话，全部变号
+        if(event.srcElement.innerText == "+/-" && results != ""){
+            if(flg == -1){//如果已经按了一次+/-
+                results = String(results2);//强制类型转换（把部分的数字类型转换成字符串类型
+                display.innerText = results;
+                flg = -flg;
+                return;
+            }
+            results2 = results;
+            results = "-" + "(" + results + ")";//给现有的内容加上括号，然后加上负号
+            flg = -flg;
+            display.innerText = results;
+            return;
+        }
+        //在按下了其他运算符或数字后，在按等号，继续运算
+        if(lastKey == "=" && event.srcElement.innerText.match(re3)){
+            results = calresults;
+        }
+
+        results += event.srcElement.innerText;//event代表事件，这里的事件是onclick点击事件,srcElement是指事件的元素，在这里是指被点击的单元格,innerText在这里是指获取这个单元格的内容
+        lastKey = event.srcElement.innerText;
+        display.innerText = results;//display是第一格单元格的id，在第一行显示点击了的内容
+    }
+
+    //计算结果的函数
+    function resultscalcaulte(){
+        //判断算式是不是以运算符号*或/开头
+        if(results.match(re1)){//如果输入的内容和re1匹配成功
+            display.innerText = "输入错误";
+            results = "";//清空内容
+            return;
+        }
+        //判断算式是不是以运算符号*或/结尾时按下等号
+        if(results.match(re2)){
+            display.innerText = "输入错误";
+            results = "";//清空内容
+            return;
+        }
+
+        calresults = eval(results);//eval()可以运行括号里面的js语句的字符串，并且返回其值。如果results等于7+8,则eval就会计算它，并且返回16,然后把16赋值给calresults
+        display.innerText = calresults;//把计算好的值，输出来，显示出来
+        lastKey = "=";
+        results = "";
+    }
+</script>
+</body>
+</html>
