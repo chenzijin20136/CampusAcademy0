@@ -1,0 +1,57 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Task16</title>
+    <style>
+        div,body,td,tr{margin:0;padding:0;}
+        table{border-collapse:collapse;margin:20px auto 0;text-align:center;}
+        .wrap{
+            width:170px;
+            margin:60px auto;
+            background-color:#FF847C;
+            border-radius:20px;
+            padding:20px;
+        }
+        input{
+            border-radius:14px;
+            padding:4px;
+            outline:none;
+            border:none;
+            background-color:#FECEA8;
+            margin:8px 0;
+        }
+        label{
+            color:#45171D;
+        }
+       #add-btn{
+            width:70px;
+            margin-top:6px;
+            margin-left:42px;
+           background-color:#ccc;
+        }
+        td,tr{
+            color:#45171D;
+            border:1px solid #45171D;
+        }
+        button{
+            border-radius:6px;
+            outline:none;
+            border:none;
+            background-color:#FF847C;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <div>
+        <label>城市名称：<input id="aqi-city-input" type="text"></label><br>
+        <label>空气质量指数：<input id="aqi-value-input" type="text"></label><br>
+        <button id="add-btn">确认添加</button>
+    </div>
+    <table id="aqi-table"></table>
+</div>
+<script src="js/task16.js"></script>
+</body>
+</html>

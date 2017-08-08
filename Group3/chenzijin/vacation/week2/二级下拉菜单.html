@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>二级菜单</title>
+    <style>
+        body,div,ul,li,h1,h2{margin:0;padding:0;}
+        li{list-style:none;}
+        a{text-decoration:none;}
+        h1,h2,a{color:#fff;font-family:"宋体";}
+        #menu{
+            width:240px;
+            margin:30px auto;
+        }
+        #menu h1{
+            font-size:16px;
+            margin-top:1px;
+            background-color:#E84545;
+            border-radius:10px;
+        }
+        #menu h2{
+            font-size:14px;
+            margin-top:1px;
+            background-color:#903749;
+            border-radius:10px;
+        }
+        #menu ul{
+            height:160px;
+            overflow:auto;
+            background-color:#999;
+            border-radius:10px;
+        }
+        #menu ul a{
+            padding-left:40px;
+        }
+        #menu a{
+            display:block;
+            padding:10px 0 10px 20px;
+        }
+        #menu a:hover{
+            background-color:#ccc;
+            border-radius:10px;
+        }
+        #menu .hide{
+            display:none;
+        }
+    </style>
+</head>
+<body>
+<div id="menu">
+    <h1 onclick="javascript:showMenu(this,0)"><a href="#">一级菜单A</a></h1>
+    <div class="hide">
+        <h2 onclick="javascript:showMenu(this,0)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,1)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,2)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,3)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,4)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,5)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,6)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,7)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,8)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,9)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,10)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,11)"><a href="#">二级菜单a</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+    </div>
+    <h1 onclick="javascript:showMenu(this,1)"><a href="#">一级菜单B</a></h1>
+    <div class="hide">
+        <h2 onclick="javascript:showMenu(this,0)"><a href="#">二级菜单b</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,1)"><a href="#">二级菜单b</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+    </div>
+    <h1 onclick="javascript:showMenu(this,2)"><a href="#">一级菜单C</a></h1>
+    <div class="hide">
+        <h2 onclick="javascript:showMenu(this,0)"><a href="#">二级菜单c</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,1)"><a href="#">二级菜单c</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+    </div>
+    <h1 onclick="javascript:showMenu(this,3)"><a href="#">一级菜单D</a></h1>
+    <div class="hide">
+        <h2 onclick="javascript:showMenu(this,0)"><a href="#">二级菜单d</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+        <h2 onclick="javascript:showMenu(this,1)"><a href="#">二级菜单d</a></h2>
+        <ul class="hide">
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+            <li><a href="#">三级菜单</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    function showMenu(obj,n){
+        var oMenu = obj.parentNode;
+        if(!oMenu.id){
+            var oUl = oMenu.getElementsByTagName("ul");
+            var oH2 = oMenu.getElementsByTagName("h2");
+            var t = 2;
+        }else{
+            var oUl =document.getElementById(oMenu.id).getElementsByTagName("div");
+            var oH2 = document.getElementById(oMenu.id).getElementsByTagName("h1");
+            var t = 1;
+        }
+        for(var i=0;i<oH2.length;i++){
+            oH2[i].className = "";
+        }
+        obj.className = "h" + t;
+        for(var i = 0;i<oUl.length;i++){
+            if(i != n){
+                oUl[i].className = "hide";
+            }
+        }
+        if (oUl[n].className == "hide") {
+            oUl[n].className = "";
+        } else {
+            oUl[n].className = "hide";
+            obj.className = "";
+        }
+    }
+</script>
+</body>
+</html>
