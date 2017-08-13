@@ -1,0 +1,63 @@
+body,div,input,button{margin:0;padding:0;}
+input{outline:none;border:none;}
+button{border:none;outline:none;}
+body{
+    background-color:#333;
+}
+.wrap{
+    background:url("../images/background.jpg") no-repeat ;
+    width:360px;
+    height:525px;
+    margin:40px auto;
+    border-radius:16px;
+    filter:alpha(opacity = 90);
+    opacity:0.9;
+    padding:20px;
+}
+input{
+    width:260px;
+    height:50px;
+    display:inline-block;
+    margin-top:20px;
+    margin-left:42px;
+    border-radius:10px;
+    background-color:#FFD3B5;
+    filter:alpha(opacity = 55);
+    opacity:0.55;
+    font-size:18px;
+    color:#333;
+}
+button{
+    background-color:#FFAAA6;
+    filter:alpha(opacity = 75);
+    opacity:0.75;
+    color:#333;
+    width:260px;
+    height:50px;
+    border-radius:10px;
+    margin-top:40px;
+    margin-left:42px;
+    cursor: pointer;
+    font-size:20px;
+}
+.btn_last{
+    margin-top:12px;
+}
+strong{
+    margin-left:20px;
+    font-size: 24px;
+    color:#bc211a;
+}
+.wrap div{ position:relative;}
+.formtips{
+    position:absolute;
+    background: transparent;
+    width: 200px;
+    height: 40px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 40px;
+    color:#f67771;
+    top:22px;
+    left:380px;
+}

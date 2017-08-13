@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery-Tab选项卡</title>
+    <link rel="stylesheet" href="css/jQuery-Tab选项卡.css">
+</head>
+<body>
+<div class="tab" >
+    <ul class="tab-nav" id="tab">
+        <li class="active"><a href="#">catOne</a></li>
+        <li><a href="#">catTwo</a></li>
+        <li><a href="#">catThree</a></li>
+        <li><a href="#">catFour</a></li>
+    </ul>
+    <div class="content-wrap" id="contents">
+        <div class="content-item current"><img src="images/1.jpg" alt="cat"></div>
+        <div class="content-item"><img src="images/2.jpg" alt="cat"></div>
+        <div class="content-item"><img src="images/3.jpg" alt="cat"></div>
+        <div class="content-item"><img src="images/4.jpg" alt="cat"></div>
+    </div>
+</div>
+<script src="js/jQuery-Tab选项卡.js"></script>
+<script>
+    $(function(){
+        window.onload = function(){
+            var list = $("#tab li");
+            var divs = $("#contents div");
+
+            list.click(function(){
+                var li_selected = $(this);//选中的li分类
+                var num = li_selected.index();//相对于同胞元素的位置
+                list.removeClass();//清空li,CSS属性
+                li_selected.addClass("active");//选中的li添加属性
+                divs.css("display","none");//隐藏所有ul标签
+                divs.eq(num).css("display","block");//展示选中的li所对应的div内容
+            })
+        }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,49 @@
+body,div,p,img{margin:0;padding:0;}
+img{border:none;vertical-align:top;}
+button{border:none;outline:none;cursor: pointer;}
+a{text-decoration: none;}
+body{
+    background-color:#464545;
+}
+#resText{
+    width:380px;
+    height:500px;
+    margin:80px auto;
+    overflow: hidden;
+}
+.day{
+    width:360px;
+    height:480px;
+    padding:10px;
+    background-color:#FEFAEC;
+    border-radius:10px;
+    color:#f89a9a;
+    position:relative;
+}
+.day img{
+    margin-bottom:20px;
+}
+.day p{
+    font-size:20px;
+    margin-left:50px;
+    line-height:40px;
+}
+a{
+    position:fixed;
+    top:40px;
+    right:80px;
+    color:#fa8a8a;
+    border: 1px solid #FEFAEC;
+    padding: 4px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+a:hover{
+    color:#d54c4c;
+}
+#up{
+    top:80px;
+}
+#next{
+    top:120px;
+}
